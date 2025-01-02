@@ -15,14 +15,23 @@ class TodoTimer extends StatelessWidget {
     final String seconds = todoEntryTask.second.toString().length == 1
         ? "0${todoEntryTask.second}"
         : "${todoEntryTask.second}";
-    return CircleAvatar(
-      backgroundColor: Colors.black,
-      radius: 28,
-      child: Text(
-        "${todoEntryTask.minute}:$seconds",
-        style: const TextStyle(
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-      ),
+    return Column(
+      children: [
+        CircleAvatar(
+          backgroundColor: Colors.black,
+          radius: 28,
+          child: Text(
+            "${todoEntryTask.minute}:$seconds",
+            style: const TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        const Text(
+          "Selected Time",
+          style: TextStyle(
+              color: Colors.black, fontSize: 15, fontWeight: FontWeight.w600),
+        )
+      ],
     );
   }
 }

@@ -70,7 +70,8 @@ class _MinutesSelectuonDropDownState extends State<MinutesSelectionDropDown> {
     "1 minute",
     "2 minute",
     "3 minute",
-    "4 minute"
+    "4 minute",
+    "5 minute"
   ];
   late String selectedValue;
   @override
@@ -97,8 +98,10 @@ class _MinutesSelectuonDropDownState extends State<MinutesSelectionDropDown> {
             widget.slectedTimerCallBack(2);
           } else if (newStatus == "3 minute") {
             widget.slectedTimerCallBack(3);
-          } else {
+          } else if (newStatus == "4 minute") {
             widget.slectedTimerCallBack(4);
+          } else {
+            widget.slectedTimerCallBack(5);
           }
         });
       },

@@ -38,8 +38,6 @@ dependencies:
   sqflite: ^2.3.2
   flutter_bloc: ^8.1.6
   path: ^1.8.3
-  timer_count_down: ^2.2.2
-  circular_countdown_timer: ^0.2.3
 
 dev_dependencies:
   flutter_test:

@@ -21,12 +21,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
           // in this list for showing updated data on UI side.
           List<TodoEntry> newTodoList = event.todoList!;
           newTodoList.insert(0, event.todoEntry);
-          // newTodoList.reversed.toList();
-          print("@@@@@@@");
-          for (var i in newTodoList) {
-            print(i.title);
-          }
-          print("@@@@@@@");
+
           return emit(TodoCreatedState(todoList: newTodoList.toList()));
         } catch (e) {
           debugPrint("ERROR $e");
