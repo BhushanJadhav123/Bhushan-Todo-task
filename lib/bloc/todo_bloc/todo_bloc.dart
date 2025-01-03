@@ -11,11 +11,11 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 
     /// Create event
     on<TodoCreateEvent>(
-      (event, emit) {
+      (event, emit) async {
         try {
           emit(TodoLoadingState());
 
-          databasehandler.insertTodo(event.todoEntry);
+          await databasehandler.insertTodo(event.todoEntry);
 
           // We are getting old todo list from [TodoCreateEvent], and adding new todoEntry
           // in this list for showing updated data on UI side.
@@ -33,8 +33,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<TodoFetchEvent>(
       (event, emit) async {
         try {
-          List<TodoEntry> todoEntries = [];
           emit(TodoLoadingState());
+          List<TodoEntry> todoEntries = [];
 
           final List data = await databasehandler.getTodoList();
           if (data.isEmpty) return emit(TodoEmptyState());
@@ -49,6 +49,13 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
                   id: dataMap[columnId]),
             );
           }
+
+          /// If you want to show loading indicator than uncommit below line,
+
+          // return await Future.delayed(Duration(seconds: 1), () {
+          //   emit(TodoLoadedState(todoList: todoEntries.reversed.toList()));
+          // });
+
           return emit(TodoLoadedState(todoList: todoEntries.reversed.toList()));
         } catch (e) {
           debugPrint("FetchERROR $e");

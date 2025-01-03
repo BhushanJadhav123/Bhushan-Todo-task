@@ -76,7 +76,7 @@ class SearchPageBuilder extends StatelessWidget {
       return searchBlocState.filterdList.isEmpty
           ? const Expanded(
               child: Center(
-                child: Text("Item does not exis",
+                child: Text("Item does not exist",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,

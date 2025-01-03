@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
       }, builder: (context, state) {
         return state is! TodoLoadingState
             ? HomeTodoBodyStateWidget(state: state)
-            : const CircularProgressIndicator();
+            : const Center(child: CircularProgressIndicator(color: Colors.red));
       }),
     );
   }
